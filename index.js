@@ -23,11 +23,18 @@ writeButton.addEventListener("click", async () => {
   log("User clicked write button");
 
   try {
+    const data = "https://yubi.id/z";
+
     const ndef = new NDEFReader();
-    await ndef.write({
-      records: [{ recordType: "url", data: "https://yubi.id/z" }],
-    });
-    log("> Message written");
+    await ndef.write(
+      {
+        records: [{ recordType: "url", data: data }],
+      },
+      {
+        overwrite: true,
+      }
+    );
+    log("> Message written with value " + data);
   } catch (error) {
     log("Argh! " + error);
   }
