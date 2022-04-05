@@ -14,10 +14,6 @@ scanButton.addEventListener("click", async () => {
       log(`> Serial Number: ${serialNumber}`);
       log(`> Records: (${message.records.length})`);
     });
-
-    if ("NDEFReader" in window && "makeReadOnly" in NDEFReader.prototype) {
-      log("> make read only supported");
-    }
   } catch (error) {
     log("Argh! " + error);
   }
@@ -39,6 +35,10 @@ writeButton.addEventListener("click", async () => {
       }
     );
     log("> Message written with value " + data);
+    await ndef.makeReadOnly();
+    console.log(
+      "NFC tag has been made permanently read-only after writing to it."
+    );
   } catch (error) {
     log("Argh! " + error);
   }
