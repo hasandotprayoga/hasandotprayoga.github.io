@@ -23,7 +23,7 @@ writeButton.addEventListener("click", async () => {
   log("User clicked write button");
 
   try {
-    const data = "https://yubi.id/z";
+    const data = document.getElementById("data").value;
 
     const ndef = new NDEFReader();
     await ndef.write(
@@ -35,8 +35,6 @@ writeButton.addEventListener("click", async () => {
       }
     );
     log("> Message written with value " + data);
-    await ndef.makeReadOnly();
-    log("NFC tag has been made permanently read-only after writing to it.");
   } catch (error) {
     log("Argh! " + error);
   }
