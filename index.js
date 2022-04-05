@@ -14,6 +14,10 @@ scanButton.addEventListener("click", async () => {
       log(`> Serial Number: ${serialNumber}`);
       log(`> Records: (${message.records.length})`);
     });
+
+    if ("NDEFReader" in window && "makeReadOnly" in NDEFReader.prototype) {
+      log("> make read only supported");
+    }
   } catch (error) {
     log("Argh! " + error);
   }
