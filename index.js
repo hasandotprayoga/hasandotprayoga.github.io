@@ -36,9 +36,7 @@ writeButton.addEventListener("click", async () => {
     );
     log("> Message written with value " + data);
     await ndef.makeReadOnly();
-    console.log(
-      "NFC tag has been made permanently read-only after writing to it."
-    );
+    log("NFC tag has been made permanently read-only after writing to it.");
   } catch (error) {
     log("Argh! " + error);
   }
